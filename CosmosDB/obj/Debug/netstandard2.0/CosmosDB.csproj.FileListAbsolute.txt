@@ -1,0 +1,11 @@
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.0\Cosmos.CRTCompat.dll
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.0\CosmosDB.deps.json
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.0\CosmosDB.dll
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.0\CosmosDB.pdb
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.csprojAssemblyReference.cache
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.AssemblyInfoInputs.cache
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.AssemblyInfo.cs
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.csproj.CoreCompileInputs.cache
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.dll
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.0\CosmosDB.pdb
