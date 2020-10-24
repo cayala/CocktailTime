@@ -47,3 +47,6 @@ C:\Dev\CocktailTime\CocktailTime\obj\Release\netcoreapp3.1\staticwebassets\Cockt
 C:\Dev\CocktailTime\CocktailTime\obj\Release\netcoreapp3.1\CocktailTime.dll
 C:\Dev\CocktailTime\CocktailTime\obj\Release\netcoreapp3.1\CocktailTime.pdb
 C:\Dev\CocktailTime\CocktailTime\obj\Release\netcoreapp3.1\CocktailTime.genruntimeconfig.cache
+C:\Dev\CocktailTime\CocktailTime\bin\Release\netcoreapp3.1\Azure.Data.AppConfiguration.dll
+C:\Dev\CocktailTime\CocktailTime\bin\Release\netcoreapp3.1\Microsoft.Azure.AppConfiguration.AspNetCore.dll
+C:\Dev\CocktailTime\CocktailTime\bin\Release\netcoreapp3.1\Microsoft.Extensions.Configuration.AzureAppConfiguration.dll

@@ -47,3 +47,6 @@ C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.
 C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Dev\CocktailTime\CocktailTime\obj\Debug\netcoreapp3.1\CocktailTime.MvcApplicationPartsAssemblyInfo.cs
+C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Azure.Data.AppConfiguration.dll
+C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Microsoft.Azure.AppConfiguration.AspNetCore.dll
+C:\Dev\CocktailTime\CocktailTime\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.AzureAppConfiguration.dll

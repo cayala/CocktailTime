@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Azure.Identity;
 using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Microsoft.Extensions.Configuration;
 
 namespace CocktailTime
 {
@@ -30,7 +31,11 @@ namespace CocktailTime
             //})
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>();
+                webBuilder.ConfigureAppConfiguration(config => 
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(settings["AppConfig:connectionString"]);
+                }).UseStartup<Startup>();
             });
 
         static string GetKeyVaultEndpoint()

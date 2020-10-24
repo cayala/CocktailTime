@@ -12,7 +12,6 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "",
       "environmentVariables": {
         "KEYVAULT_ENDPOINT": "https://cocktailtime-appsettings.vault.azure.net/",
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,10 +20,9 @@
     "CocktailTime": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "KEYVAULT_ENDPOINT": "https://cocktailtime-appsettings.vault.azure.net/"
+        "KEYVAULT_ENDPOINT": "https://cocktailtime-appsettings.vault.azure.net/",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:5000"
     }

@@ -13,7 +13,6 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "KEYVAULT_ENDPOINT": "https://cocktailtime-appsettings.vault.azure.net/",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
