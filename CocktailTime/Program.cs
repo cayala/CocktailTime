@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Azure.Identity;
 using Azure.Extensions.AspNetCore.Configuration.Secrets;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Azure;
 
 namespace CocktailTime
 {
@@ -22,23 +22,21 @@ namespace CocktailTime
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             //This is added in to have Azure pull secrets and api keys from keyvault
-            //.ConfigureAppConfiguration((ctx, builder) =>
-            //{
-            //    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                
-            //    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-            //        builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential(), new KeyVaultSecretManager());
-            //})
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.ConfigureAppConfiguration(config => 
+                webBuilder.ConfigureAppConfiguration((ctx, config) =>
                 {
                     var settings = config.Build();
-                    config.AddAzureAppConfiguration(settings["AppConfig:connectionString"]);
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(settings["AppConfig:connectionString"])
+                        .ConfigureKeyVault(kv =>
+                        {
+                            //Be sure to set system environment variables and restart your machine that way they take affect.
+                            kv.SetCredential(new DefaultAzureCredential());
+                        });
+                    });
                 }).UseStartup<Startup>();
             });
-
-        static string GetKeyVaultEndpoint()
-            => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     }
 }

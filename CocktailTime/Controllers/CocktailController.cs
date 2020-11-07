@@ -3,36 +3,33 @@ using CocktailTime.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace CocktailTime.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CocktailController: Controller
+    public class CocktailController : Controller
     {
         private readonly ICocktailRepository _repo;
         public CocktailController(ICocktailRepository repo)
             => _repo = repo;
 
         [HttpPost]
-        public async Task<ActionResult> SavePhoneNumber([FromBody] CocktailDTO dto) 
+        public async Task<ActionResult> SavePhoneNumber([FromBody] CocktailDTO dto)
         {
             try
             {
                 await dto.SavePhoneNumber(_repo);
                 return Ok("Successfully saved phone number");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
-        [HttpGet]
+        [HttpPost("get")]
         public async Task<ActionResult> GetPhoneNumber([FromBody] CocktailDTO dto)
         {
             try

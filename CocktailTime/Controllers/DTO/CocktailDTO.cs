@@ -1,19 +1,18 @@
 ﻿using CocktailTime.Repositories.Interfaces;
 using CosmosDB.Documents;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using CocktailTime.Json.Deserializers;
 
 namespace CocktailTime.Controllers.DTO
 {
+    [JsonConverter(typeof(CocktailDtoDeserializer))]
     public class CocktailDTO
     {
         //Read: reason why this works vs. using a readonly is beacause this is considered a property, the other is considered a field
         public string PhoneNumber { get;}
         public string TimeZone { get;}
+        
         public CocktailDTO(string phoneNumber, string timeZone)
             => (PhoneNumber, TimeZone) = (phoneNumber,timeZone);
 

@@ -13,7 +13,9 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "KEYVAULT_ENDPOINT": "https://cocktailtime-appsettings.vault.azure.net/",
+        "AZURE_CLIENT_ID ": "fd96bfa3-dbca-4631-9b39-7ea819a3f53e",
+        "AZURE_TENANT_ID ": "87a6f572-f404-48c7-8e3f-1575839c6a02",
+        "AZURE_CLIENT_SECRET ": "WW3CIRtyjCDs0----s.M7YaL2V682-7F9s",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },

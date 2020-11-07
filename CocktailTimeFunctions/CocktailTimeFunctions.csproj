@@ -23,6 +23,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Serializer\" />
     <Folder Include="Services\" />
   </ItemGroup>
 </Project>

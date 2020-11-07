@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CocktailTime.Repositories;
+using CocktailTime.Repositories.Interfaces;
+using CosmosDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using CosmosDB;
-using Microsoft.Azure.Cosmos;
-using CocktailTime.Repositories.Interfaces;
-using CocktailTime.Repositories;
 
 namespace CocktailTime
 {
@@ -56,7 +50,7 @@ namespace CocktailTime
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
