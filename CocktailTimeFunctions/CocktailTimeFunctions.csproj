@@ -5,7 +5,9 @@
     <UserSecretsId>4fb5d44d-9f03-4199-829f-2c3947367697</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.2.3" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
   </ItemGroup>
@@ -23,7 +25,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Serializer\" />
     <Folder Include="Services\" />
   </ItemGroup>
 </Project>

@@ -18,9 +18,9 @@ namespace CocktailTimeFunctions.Models
             Name = name;
             ServingGlass = servingGlass;
             Instructions = instructions;
-            Image = Image;
+            Image = image ?? new Uri(String.Empty);
             Ingredients = ingredients;
-            Message = $"It's cocktail time! Today's drink is: {Name}! The ingredients are: {ConcatIngredients(Ingredients)}. This is then served in a {ServingGlass}. Here's how to make it; {Instructions} /n {Image}";
+            Message = $"It's cocktail time! Today's drink is: {NullCheckString(Name)}! The ingredients are: {ConcatIngredients(Ingredients)}. This is then served in a {NullCheckString(ServingGlass)}. Here's how to make it; {NullCheckString(Instructions)} {Image.ToString()}";
 
             static string ConcatIngredients(List<Ingredient> ingredients) 
             {
@@ -33,6 +33,8 @@ namespace CocktailTimeFunctions.Models
                 sb.Append($"and {ingredients[ingredients.Count - 1].Amount} of {ingredients[ingredients.Count - 1].Name}");
                 return sb.ToString();
             }
+            static string NullCheckString(string str) 
+                => !String.IsNullOrWhiteSpace(str) ? str : String.Empty;
         }
     }
 }

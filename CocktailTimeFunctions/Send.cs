@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using CocktailTimeFunctions.HttpClients;
 using CosmosDB;
 using CosmosDB.Documents;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using SmsService;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocktailTimeFunctions
 {
@@ -25,6 +21,7 @@ namespace CocktailTimeFunctions
 
         [FunctionName("Send")]
         public async Task Run([TimerTrigger("0 0 17 * * *")]TimerInfo myTimer, ILogger log)
+        //public async Task Run([TimerTrigger("10 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             var cocktailMsg = await _HttpClient.GetCocktailMessage();
 
@@ -34,12 +31,12 @@ namespace CocktailTimeFunctions
 
             var docs = await _CosmosService.GetDocuments<CocktailDocument>(
                 new QueryDefinition(Constants.Cosmos.Query.CocktailTime.Recipients.GetDocumentByTimeZone)
-                    .WithParameter("@timezone", "PST")) ?? new List<CocktailDocument>();
+                    .WithParameter("@timezone", "PDT")) ?? new List<CocktailDocument>();
 
             var tasks = new List<Task>();
             foreach(var d in docs)
             {
-                tasks.Add(_SMS.Send(String.Empty, d.PhoneNumber, cocktailMsg.Message));
+                tasks.Add(_SMS.Send("+18334503294", "+1" + d.PhoneNumber, cocktailMsg.Message));
             }
             Task.WaitAll(tasks.ToArray());
         }

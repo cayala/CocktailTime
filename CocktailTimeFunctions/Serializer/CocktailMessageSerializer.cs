@@ -14,13 +14,21 @@ namespace CocktailTimeFunctions.Serializer
         {
             CheckForBeginningToken(ref reader);
 
-            string name, servingGlass, instructions; Uri image = null; Queue<string> ingredients = null; Queue<string> amounts = null;
+            string name, servingGlass, instructions; Uri image = null; Queue<string> ingredients = new Queue<string>(); Queue<string> amounts = new Queue<string>();
             name = servingGlass = instructions = null;
 
             while (ReadNextJsonToken(ref reader)) 
             {
-                if (CheckForEndingToken(ref reader))
+                if (CheckForEndingToken(ref reader)) 
+                {
+                    //Something to beware of in the future, it is REQUIRED that the json reader object makes it to the very end of the object (the final curly brace } ) 
+                    // before returning any object otherwise it'll throw an error saying it hasn't read enough
+                    // ergo due to the parsed json object it requires two more reads to reach the very end of the object
+                    reader.Read();
+                    reader.Read();
                     return new CocktailMessage(name, servingGlass, instructions, image, CreateIngredients(ingredients, amounts));
+                }
+
                 if (reader.TokenType == JsonTokenType.PropertyName)
                 {
                     string propertyName = reader.GetString().ToLower();
@@ -36,7 +44,6 @@ namespace CocktailTimeFunctions.Serializer
                     }
                 }
             }
-
             throw new JsonException("JSON object passed in did not have the expected properties");
             static void CheckForBeginningToken(ref Utf8JsonReader reader)
             {
@@ -51,7 +58,7 @@ namespace CocktailTimeFunctions.Serializer
                 => reader.Read();
             static List<Ingredient> CreateIngredients(Queue<string> ingredientQueue, Queue<string> amountsQueue) 
             {
-                List<Ingredient> ingredients = null;
+                List<Ingredient> ingredients = new List<Ingredient>();
                 for (int index = 0; index < ingredientQueue.Count; index++) 
                 {
                     ingredients.Add(new Ingredient(ingredientQueue.Dequeue(), amountsQueue.Dequeue()));
@@ -60,13 +67,13 @@ namespace CocktailTimeFunctions.Serializer
             }
             static void CheckForIngredient(ref Utf8JsonReader reader, ref Queue<string> ingredients, ref Queue<string> amounts, string propertyName) 
             {
-                if (propertyName.Contains("strIngredient"))
+                 if (propertyName.Contains("stringredient"))
                 {
                     string ingredient = reader.GetString();
                     if (!String.IsNullOrWhiteSpace(ingredient))
                         ingredients.Enqueue(ingredient);
                 }
-                else if (propertyName.Contains("strMeasure")) 
+                else if (propertyName.Contains("strmeasure")) 
                 {
                     string amount = reader.GetString();
                     if (!String.IsNullOrWhiteSpace(amount))

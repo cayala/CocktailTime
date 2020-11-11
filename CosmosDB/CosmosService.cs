@@ -32,7 +32,7 @@ namespace CosmosDB
 
         public async Task<List<T>> GetDocuments<T>(QueryDefinition query) where T : BaseDocument 
         {
-            List<T> results = null;
+            List<T> results = new List<T>();
 
             using var feedIterator = _Container.GetItemQueryIterator<T>(query);
 
