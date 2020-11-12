@@ -36,7 +36,7 @@ namespace CocktailTimeFunctions
             var tasks = new List<Task>();
             foreach(var d in docs)
             {
-                tasks.Add(_SMS.Send("+18334503294", "+1" + d.PhoneNumber, cocktailMsg.Message));
+                tasks.Add(_SMS.Send("+18334503294", d.PhoneNumber, cocktailMsg.Message));
             }
             Task.WaitAll(tasks.ToArray());
         }

@@ -2,7 +2,6 @@
 using CocktailTime.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.Cosmos;
 using System;
 using System.Threading.Tasks;
 
