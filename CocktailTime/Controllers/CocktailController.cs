@@ -2,6 +2,7 @@
 using CocktailTime.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos;
 using System;
 using System.Threading.Tasks;
 
@@ -15,7 +16,16 @@ namespace CocktailTime.Controllers
         public CocktailController(ICocktailRepository repo)
             => _repo = repo;
 
+        /// <summary>
+        /// Saves a phone number and timezone to Cosmos DB so it can recieve a cocktail recipe
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> SavePhoneNumber([FromBody] CocktailDTO dto)
         {
             try
@@ -29,7 +39,17 @@ namespace CocktailTime.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets the document from the cosmos db. Returns 404 error if phone number was not found
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("get")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetPhoneNumber([FromBody] CocktailDTO dto)
         {
             try
@@ -46,7 +66,17 @@ namespace CocktailTime.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes the phone number from the cosmos db. Returns a 404 if it doesn't find it
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpDelete]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeletePhoneNumber([FromBody] CocktailDTO dto) 
         {
             try
