@@ -26,7 +26,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj": {
+                "projectPath": "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,6 +45,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.15.1, )"
             },
             "coverlet.collector": {
               "target": "Package",
@@ -80,7 +88,163 @@
             }
           ],
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.100-preview.7.20366.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj",
+        "projectName": "CocktailTime",
+        "projectPath": "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj",
+        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\CocktailTime\\CocktailTime\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Dev\\CocktailTime\\CosmosDB\\CosmosDB.csproj": {
+                "projectPath": "C:\\Dev\\CocktailTime\\CosmosDB\\CosmosDB.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Azure.Extensions.AspNetCore.Configuration.Secrets": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "Microsoft.Azure.AppConfiguration.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x86",
+              "version": "[3.1.2, 3.1.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.100-preview.7.20366.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Dev\\CocktailTime\\CosmosDB\\CosmosDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\CocktailTime\\CosmosDB\\CosmosDB.csproj",
+        "projectName": "CosmosDB",
+        "projectPath": "C:\\Dev\\CocktailTime\\CosmosDB\\CosmosDB.csproj",
+        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\CocktailTime\\CosmosDB\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.Azure.Cosmos": {
+              "target": "Package",
+              "version": "[3.14.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
