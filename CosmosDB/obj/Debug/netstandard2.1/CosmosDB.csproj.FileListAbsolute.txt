@@ -3,9 +3,12 @@ C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\Cosmos.CRTCompat.dll
 C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\CosmosDB.deps.json
 C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\CosmosDB.dll
 C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\CosmosDB.pdb
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\CocktailTime.Common.dll
+C:\Dev\CocktailTime\CosmosDB\bin\Debug\netstandard2.1\CocktailTime.Common.pdb
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.csprojAssemblyReference.cache
 C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.AssemblyInfoInputs.cache
 C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.AssemblyInfo.cs
 C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.csproj.CoreCompileInputs.cache
+C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.csproj.CopyComplete
 C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.dll
 C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.pdb
-C:\Dev\CocktailTime\CosmosDB\obj\Debug\netstandard2.1\CosmosDB.csprojAssemblyReference.cache

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bfQYkw98roI24Syvk+QtdPIPdw1baguHdvxoNA/3CL824GtUGWUFt0lVn26dez9wuz2+rhor7Z8ER7MF1xwCWA==",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\CocktailTime\\CocktailTime.Common\\CocktailTime.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

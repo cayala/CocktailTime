@@ -20,15 +20,15 @@ namespace CocktailTime
                 webBuilder.ConfigureAppConfiguration((ctx, config) =>
                 {
                     var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                    {
-                        options.Connect(settings["AppConfig:connectionString"])
-                        .ConfigureKeyVault(kv =>
-                        {
-                            //Be sure to set system environment variables and restart your machine that way they take affect.
-                            kv.SetCredential(new DefaultAzureCredential());
-                        });
-                    });
+                    //config.AddAzureAppConfiguration(options =>
+                    //{
+                    //    options.Connect(settings["AppConfig:connectionString"])
+                    //    .ConfigureKeyVault(kv =>
+                    //    {
+                    //        //Be sure to set system environment variables and restart your machine that way they take affect.
+                    //        kv.SetCredential(new DefaultAzureCredential());
+                    //    });
+                    //});
                 }).UseStartup<Startup>();
             });
     }

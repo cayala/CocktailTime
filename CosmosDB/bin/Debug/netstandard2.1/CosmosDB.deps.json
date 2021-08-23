@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.1/": {
       "CosmosDB/1.0.0": {
         "dependencies": {
+          "CocktailTime.Common": "1.0.0",
           "Microsoft.Azure.Cosmos": "3.14.0"
         },
         "runtime": {
@@ -1162,6 +1163,11 @@
             "fileVersion": "4.6.24705.1"
           }
         }
+      },
+      "CocktailTime.Common/1.0.0": {
+        "runtime": {
+          "CocktailTime.Common.dll": {}
+        }
       }
     }
   },
@@ -1856,6 +1862,11 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "CocktailTime.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

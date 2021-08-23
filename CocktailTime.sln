@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB", "CosmosDB\Cosmos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CocktailTimeFunctions", "CocktailTimeFunctions\CocktailTimeFunctions.csproj", "{A1C35C27-A387-4B63-9A69-9EC057F5E21F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsService", "AzureCommunicationService\SmsService.csproj", "{1A448385-BDDC-4DCB-B688-5DF3B050EDA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsService", "SmsService\SmsService.csproj", "{1A448385-BDDC-4DCB-B688-5DF3B050EDA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocktailTimeTests", "CocktailTimeTests\CocktailTimeTests.csproj", "{29DBFE53-48D1-452E-B3BA-BB1C68FB7B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CocktailTimeTests", "CocktailTimeTests\CocktailTimeTests.csproj", "{29DBFE53-48D1-452E-B3BA-BB1C68FB7B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocktailTime.Common", "CocktailTime.Common\CocktailTime.Common.csproj", "{AA365C51-8AEF-4804-9786-01DCB1CCAE26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{29DBFE53-48D1-452E-B3BA-BB1C68FB7B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DBFE53-48D1-452E-B3BA-BB1C68FB7B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DBFE53-48D1-452E-B3BA-BB1C68FB7B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA365C51-8AEF-4804-9786-01DCB1CCAE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA365C51-8AEF-4804-9786-01DCB1CCAE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA365C51-8AEF-4804-9786-01DCB1CCAE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA365C51-8AEF-4804-9786-01DCB1CCAE26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

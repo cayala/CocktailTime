@@ -2403,10 +2403,21 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "CocktailTime.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CocktailTime.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CocktailTime.Common.dll": {}
+        }
+      },
       "CosmosDB/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "CocktailTime.Common": "1.0.0",
           "Microsoft.Azure.Cosmos": "3.14.0"
         },
         "compile": {
@@ -7813,6 +7824,11 @@
       "path": "../CocktailTime/CocktailTime.csproj",
       "msbuildProject": "../CocktailTime/CocktailTime.csproj"
     },
+    "CocktailTime.Common/1.0.0": {
+      "type": "project",
+      "path": "../CocktailTime.Common/CocktailTime.Common.csproj",
+      "msbuildProject": "../CocktailTime.Common/CocktailTime.Common.csproj"
+    },
     "CosmosDB/1.0.0": {
       "type": "project",
       "path": "../CosmosDB/CosmosDB.csproj",
@@ -7830,7 +7846,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlo\\.nuget\\packages\\": {}
+    "C:\\Users\\carlo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7841,8 +7858,12 @@
       "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\CocktailTime\\CocktailTimeTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7854,6 +7875,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj": {
               "projectPath": "C:\\Dev\\CocktailTime\\CocktailTime\\CocktailTime.csproj"
@@ -7869,6 +7891,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -7901,20 +7924,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7923,7 +7932,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.100-preview.7.20366.6\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

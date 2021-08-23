@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.14.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CocktailTime.Common\CocktailTime.Common.csproj" />
+  </ItemGroup>
+
 </Project>

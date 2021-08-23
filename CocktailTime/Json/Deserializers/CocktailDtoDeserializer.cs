@@ -13,10 +13,13 @@ namespace CocktailTime.Json.Deserializers
 
             string phoneNumber = null;
             string timeZone = null;
+            string timezoneCode = null;
+            sbyte utcOffset = 0;
+            bool isDaylightSavings = false;
             while (reader.Read()) 
             {
                 if (CheckForEndingToken(ref reader))
-                    return new CocktailDTO(phoneNumber, timeZone);
+                    return new CocktailDTO(phoneNumber, timeZone, timezoneCode, isDaylightSavings, utcOffset);
 
                 if (reader.TokenType == JsonTokenType.PropertyName) 
                 {
@@ -32,6 +35,9 @@ namespace CocktailTime.Json.Deserializers
                         case "Phonenumber": phoneNumber = reader.GetString(); break;
                         case "phoneNumber": phoneNumber = reader.GetString(); break;
                         case "PhoneNumber": phoneNumber = reader.GetString(); break;
+                        case "timezoneCode": timezoneCode = reader.GetString(); break;
+                        case "utcOffset": utcOffset = reader.GetSByte(); break;
+                        case "isDaylightSavings": isDaylightSavings = reader.GetBoolean(); break;
                         default: break;
                     }
                 }

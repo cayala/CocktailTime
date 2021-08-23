@@ -14,7 +14,7 @@ namespace CocktailTimeFunctions.HttpClients
     {
         //This class should make the httpClient Request
         //This should handle the JSON deserialization of the response
-
+        //TODO: Create custom URL shortner, research needed
         private readonly HttpClient _Client;
 
         public CocktailDBHttpClient(Uri url) 

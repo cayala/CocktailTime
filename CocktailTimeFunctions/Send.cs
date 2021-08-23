@@ -1,11 +1,14 @@
 using CocktailTimeFunctions.HttpClients;
-using CosmosDB;
+using CocktailTimeFunctions.Models;
 using CosmosDB.Documents;
+using CosmosDB.Interfaces;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using SmsService;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CocktailTimeFunctions
@@ -13,32 +16,60 @@ namespace CocktailTimeFunctions
     public class Send
     {
         private readonly ISMSClient _SMS;
-        private readonly ICosmosService _CosmosService;
+        private readonly ICosmosRead _RecipientsCosmosService;
+        private readonly ICosmosCRUD _CocktailCacheCosmosService;
         private readonly CocktailDBHttpClient _HttpClient;
 
-        public Send(ISMSClient sms, ICosmosService cosmosService, CocktailDBHttpClient httpClient)
-            => (_SMS, _CosmosService, _HttpClient) = (sms, cosmosService, httpClient);
+        public Send(ISMSClient sms, ICosmosRead recipientsCosmosService, ICosmosCRUD cocktailCacheCosmosService, CocktailDBHttpClient httpClient)
+            => (_SMS, _RecipientsCosmosService, _CocktailCacheCosmosService, _HttpClient) = (sms, recipientsCosmosService, cocktailCacheCosmosService, httpClient);
 
         [FunctionName("Send")]
-        public async Task Run([TimerTrigger("0 0 17 * * *")]TimerInfo myTimer, ILogger log)
-        //public async Task Run([TimerTrigger("10 * * * * *")]TimerInfo myTimer, ILogger log)
+        //TODO: Need to alter this so it sends an email at 5 PM west coast, this is currently set to UTC time
+        //public async Task Run([TimerTrigger("0 0 17 * * *")]TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("10 * * * * *")]TimerInfo myTimer, ILogger log)
         {
-            var cocktailMsg = await _HttpClient.GetCocktailMessage();
+            CocktailMessage cocktailMsg = null;
 
-            //TODO: Create way to keep track of timezones where it is 5 o'clock
-            //      Could use a dictionary that takes the current hour then compares it to another list or something
-            //      Or it could potentially use a queue that refills every hour that then takes the completed timezone and adds it to the end of the queue
-
-            var docs = await _CosmosService.GetDocuments<CocktailDocument>(
-                new QueryDefinition(Constants.Cosmos.Query.CocktailTime.Recipients.GetDocumentByTimeZone)
-                    .WithParameter("@timezone", "PDT")) ?? new List<CocktailDocument>();
-
-            var tasks = new List<Task>();
-            foreach(var d in docs)
+            if (DateTime.UtcNow.Hour == 0)
             {
-                tasks.Add(_SMS.Send("+18334503294", d.PhoneNumber, cocktailMsg.Message));
+                cocktailMsg = await _HttpClient.GetCocktailMessage();
+                var result = await _RecipientsCosmosService.GetDocuments<CocktailMessageDocument>(new QueryDefinition(Constants.Cosmos.Query.CocktailTime.CocktailCache.GetCachedCocktail));
+
+                var documentToDelete = result.FirstOrDefault();
+                if (documentToDelete != null)
+                    await _CocktailCacheCosmosService.DeleteDocument<CocktailMessageDocument>(documentToDelete.ID);
+
+                await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
             }
-            Task.WaitAll(tasks.ToArray());
+            else
+            {
+                var result = await _RecipientsCosmosService.GetDocuments<CocktailMessageDocument>(new QueryDefinition(Constants.Cosmos.Query.CocktailTime.CocktailCache.GetCachedCocktail));
+                var recipientDoc = result.FirstOrDefault();
+                if (recipientDoc is null)
+                {
+                    cocktailMsg = await _HttpClient.GetCocktailMessage();
+                    await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
+                }
+                else
+                    cocktailMsg = new CocktailMessage(recipientDoc.Name, recipientDoc.ServingGlass, recipientDoc.Instructions, new Uri(recipientDoc.Image), recipientDoc.Ingredients);
+            }
+
+            sbyte currentOffset = 0;
+            for(double utcOffset = -11; utcOffset < 15; utcOffset++)
+            {
+                if (DateTime.UtcNow.AddHours(utcOffset).Hour == 17)
+                {
+                    currentOffset = (sbyte)utcOffset;
+                    break;
+                }
+            }
+
+            var docs = await _RecipientsCosmosService.GetDocuments<RecipientDocument>(
+                new QueryDefinition(Constants.Cosmos.Query.CocktailTime.Recipients.GetDocumentsByUtcOffset)
+                    .WithParameter("@utcOffset", currentOffset)) ?? new List<RecipientDocument>();
+
+            var tasks = docs.Select(doc => _SMS.Send("+18334503294", doc.PhoneNumber, cocktailMsg.Message)).ToArray();
+            Task.WaitAll(tasks);
         }
     }
 }

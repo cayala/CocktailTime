@@ -1,0 +1,17 @@
+C:\Dev\CocktailTime\AzureCommunicationService\bin\Debug\netstandard2.1\SmsService.deps.json
+C:\Dev\CocktailTime\AzureCommunicationService\bin\Debug\netstandard2.1\SmsService.dll
+C:\Dev\CocktailTime\AzureCommunicationService\bin\Debug\netstandard2.1\SmsService.pdb
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.AssemblyInfoInputs.cache
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.AssemblyInfo.cs
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.csproj.CoreCompileInputs.cache
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.dll
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.pdb
+C:\Dev\CocktailTime\AzureCommunicationService\obj\Debug\netstandard2.1\SmsService.csprojAssemblyReference.cache
+C:\Dev\CocktailTime\SmsService\bin\Debug\netstandard2.1\SmsService.deps.json
+C:\Dev\CocktailTime\SmsService\bin\Debug\netstandard2.1\SmsService.dll
+C:\Dev\CocktailTime\SmsService\bin\Debug\netstandard2.1\SmsService.pdb
+C:\Dev\CocktailTime\SmsService\obj\Debug\netstandard2.1\SmsService.AssemblyInfoInputs.cache
+C:\Dev\CocktailTime\SmsService\obj\Debug\netstandard2.1\SmsService.AssemblyInfo.cs
+C:\Dev\CocktailTime\SmsService\obj\Debug\netstandard2.1\SmsService.csproj.CoreCompileInputs.cache
+C:\Dev\CocktailTime\SmsService\obj\Debug\netstandard2.1\SmsService.dll
+C:\Dev\CocktailTime\SmsService\obj\Debug\netstandard2.1\SmsService.pdb

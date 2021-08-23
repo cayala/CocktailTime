@@ -93,7 +93,7 @@ namespace CocktailTimeTests.Json.Deserializers
         [Fact]
         public void WriteThrowsNotImplemented() 
             => Assert.Throws<NotImplementedException>(() => {
-                JsonSerializer.Serialize<CocktailDTO>(new CocktailDTO(null, null), SetupDeserializer());
+                JsonSerializer.Serialize<CocktailDTO>(new CocktailDTO(null, null, null, false, 0), SetupDeserializer());
             });
     }
 }

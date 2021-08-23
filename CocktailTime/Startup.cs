@@ -1,6 +1,7 @@
 using CocktailTime.Repositories;
 using CocktailTime.Repositories.Interfaces;
-using CosmosDB;
+using CosmosDB.Containers;
+using CosmosDB.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.Cosmos;
@@ -28,8 +29,8 @@ namespace CocktailTime
             //Note: The configuration for these values are hidden away from view in the .Net Core Manage App Secrets which can be accessed by right clicking the project and hitting "Manage Secrets"
             //Note: These secrets are stored on disk in the AppData folder and these values are only retrieved if the application Environment variable is set to "Development"
             //Note: Link for above notes -> https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows
-            var cosmosService = new CosmosService(Configuration["Cosmos:database:name"], Configuration["Cosmos:database:containers:recipients"], new CosmosClient(Configuration["Cosmos:account"], Configuration["Cosmos:key"]));
-            services.AddSingleton<ICosmosService>(cosmosService);
+            var cosmosService = new RecipientsCosmosService(Configuration["Cosmos:database:name"], Configuration["Cosmos:database:containers:recipients"], new CosmosClient(Configuration["Cosmos:account"], Configuration["Cosmos:key"]));
+            services.AddSingleton<ICosmosCRUD>(cosmosService);
             services.AddSingleton<ICocktailRepository>(new CocktailRepository(cosmosService));
 
             services.AddSwaggerGen();

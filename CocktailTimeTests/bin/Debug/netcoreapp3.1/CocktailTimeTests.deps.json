@@ -1561,8 +1561,14 @@
           "CocktailTime.dll": {}
         }
       },
+      "CocktailTime.Common/1.0.0": {
+        "runtime": {
+          "CocktailTime.Common.dll": {}
+        }
+      },
       "CosmosDB/1.0.0": {
         "dependencies": {
+          "CocktailTime.Common": "1.0.0",
           "Microsoft.Azure.Cosmos": "3.14.0"
         },
         "runtime": {
@@ -2558,6 +2564,11 @@
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
     "CocktailTime/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CocktailTime.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
