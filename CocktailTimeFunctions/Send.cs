@@ -30,28 +30,33 @@ namespace CocktailTimeFunctions
         {
             CocktailMessage cocktailMsg = null;
 
+            //Every night at midnight utc, cache a brand new cocktail for the day
             if (DateTime.UtcNow.Hour == 0)
             {
                 cocktailMsg = await _HttpClient.GetCocktailMessage();
                 var result = await _RecipientsCosmosService.GetDocuments<CocktailMessageDocument>(new QueryDefinition(Constants.Cosmos.Query.CocktailTime.CocktailCache.GetCachedCocktail));
+                var cachedCocktail = result.FirstOrDefault();
 
-                var documentToDelete = result.FirstOrDefault();
-                if (documentToDelete != null)
-                    await _CocktailCacheCosmosService.DeleteDocument<CocktailMessageDocument>(documentToDelete.ID);
-
-                await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
+                if (cachedCocktail is null)
+                    await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
+                else
+                {
+                    await _CocktailCacheCosmosService.DeleteDocument<CocktailMessageDocument>(cachedCocktail.ID);
+                    await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
+                }
             }
             else
             {
                 var result = await _RecipientsCosmosService.GetDocuments<CocktailMessageDocument>(new QueryDefinition(Constants.Cosmos.Query.CocktailTime.CocktailCache.GetCachedCocktail));
-                var recipientDoc = result.FirstOrDefault();
-                if (recipientDoc is null)
+                var cachedCocktail = result.FirstOrDefault();
+
+                if (cachedCocktail is null)
                 {
                     cocktailMsg = await _HttpClient.GetCocktailMessage();
                     await _CocktailCacheCosmosService.AddDocument(new CocktailMessageDocument(cocktailMsg.Name, cocktailMsg.ServingGlass, cocktailMsg.Instructions, cocktailMsg.Image.ToString(), cocktailMsg.Ingredients));
                 }
                 else
-                    cocktailMsg = new CocktailMessage(recipientDoc.Name, recipientDoc.ServingGlass, recipientDoc.Instructions, new Uri(recipientDoc.Image), recipientDoc.Ingredients);
+                    cocktailMsg = new CocktailMessage(cachedCocktail.Name, cachedCocktail.ServingGlass, cachedCocktail.Instructions, new Uri(cachedCocktail.Image), cachedCocktail.Ingredients);
             }
 
             sbyte currentOffset = 0;
