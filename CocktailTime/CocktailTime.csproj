@@ -16,5 +16,11 @@
     <ProjectReference Include="..\CosmosDB\CosmosDB.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Views\Jquery\jquery-3.6.0.min.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 </Project>

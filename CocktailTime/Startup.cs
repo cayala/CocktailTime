@@ -23,6 +23,7 @@ namespace CocktailTime
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddControllers();
 
             //research proper way to istantiate service via cosmos since there is a dependency
@@ -33,19 +34,19 @@ namespace CocktailTime
             services.AddSingleton<ICosmosCRUD>(cosmosService);
             services.AddSingleton<ICocktailRepository>(new CocktailRepository(cosmosService));
 
-            services.AddSwaggerGen();
+            //services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseSwaggerUI(c => 
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cocktail Time");
-                c.RoutePrefix = string.Empty;
-            });
+            //app.UseSwaggerUI(c => 
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cocktail Time");
+            //    c.RoutePrefix = string.Empty;
+            //});
 
             if (env.IsDevelopment())
             {

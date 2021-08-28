@@ -24,7 +24,6 @@ namespace CocktailTimeFunctions
             => (_SMS, _RecipientsCosmosService, _CocktailCacheCosmosService, _HttpClient) = (sms, recipientsCosmosService, cocktailCacheCosmosService, httpClient);
 
         [FunctionName("Send")]
-        //TODO: Need to alter this so it sends an email at 5 PM west coast, this is currently set to UTC time
         //public async Task Run([TimerTrigger("0 0 17 * * *")]TimerInfo myTimer, ILogger log)
         public async Task Run([TimerTrigger("10 * * * * *")]TimerInfo myTimer, ILogger log)
         {

@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/_BaseLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            <h1 class="text-center">Cocktail Time</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col align-self-center">
+            <h6 class="text-center">Sign up and receive a brand new cocktail recepie everyday at 5 o'clock your local time</h6>
+        </div>
+    </div>
+</div>
+<br />
+<div class=".container-fluid" style="padding:1.5rem">
+    <form>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Phone Number</span><input value="" class="form-input" type="tel" id="phonenumber" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">TimeZone</span> <select id="timezone" class="form-select"></select>
+                    <button type="button" id="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    let timezones = null;
+
+    function load() {
+
+        let submitBtn = document.getElementById("submit");
+        $(submitBtn).click(registerPhoneNumber);
+
+        jQuery.getJSON('https://@Context.Request.Host/api/cocktail/GetTimezones').then(function (json) {
+
+            timezones = $.parseJSON(json);
+            Object.freeze(timezones);
+
+            $(timezones).each(function (index) {
+                let selectList = document.getElementById("timezone");
+                $(selectList).append(createOptionItem(timezones[index]))
+            });
+        });
+    }
+
+    function createOptionItem(tz)
+    {
+        let optionBeginning = '<option value="';
+        let optionEnding = '">'
+        let optionClosing = '</option>';
+        return optionBeginning + tz.abbr + optionEnding + tz.value + optionClosing;
+    }
+
+    function registerPhoneNumber()
+    {
+        let phonenumber = document.getElementById("phonenumber");
+        phonenumber = $(phonenumber).val();
+
+        let selectElement = document.getElementById("timezone");
+        let selectedTz = $(selectElement).val();
+        let tz = null;
+        $(timezones).each(function (index) {
+
+            if (timezones[index].abbr == selectedTz) {
+                tz = timezones[index];
+                return;
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: 'https://@Context.Request.Host/api/cocktail/',
+            data: JSON.stringify({
+                phonenumber: phonenumber,
+                timezone: tz.value,
+                timezoneCode: tz.abbr,
+                isDaylightSavings: tz.isdst,
+                utcOffset: tz.offset
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
+    (function() {
+        $(window).ready(load);
+    })()
+
+</script>

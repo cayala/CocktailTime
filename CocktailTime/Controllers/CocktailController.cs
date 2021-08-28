@@ -94,5 +94,22 @@ namespace CocktailTime.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
+        /// <summary>
+        /// Loads the json file with all the timezones
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("gettimezones")]
+        [ProducesDefaultResponseType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult GetTimezones()
+        {
+            string json = System.IO.File.ReadAllText($"{Environment.CurrentDirectory}/TimeZones.json");
+            if (string.IsNullOrWhiteSpace(json))
+                return NotFound();
+            return Json(json);
+        }
     }
 }
