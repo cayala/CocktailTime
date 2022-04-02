@@ -1,8 +1,0 @@
-C:\Dev\CocktailTime\CocktailTime.Common\bin\Debug\netstandard2.0\CocktailTime.Common.deps.json
-C:\Dev\CocktailTime\CocktailTime.Common\bin\Debug\netstandard2.0\CocktailTime.Common.dll
-C:\Dev\CocktailTime\CocktailTime.Common\bin\Debug\netstandard2.0\CocktailTime.Common.pdb
-C:\Dev\CocktailTime\CocktailTime.Common\obj\Debug\netstandard2.0\CocktailTime.Common.AssemblyInfoInputs.cache
-C:\Dev\CocktailTime\CocktailTime.Common\obj\Debug\netstandard2.0\CocktailTime.Common.AssemblyInfo.cs
-C:\Dev\CocktailTime\CocktailTime.Common\obj\Debug\netstandard2.0\CocktailTime.Common.csproj.CoreCompileInputs.cache
-C:\Dev\CocktailTime\CocktailTime.Common\obj\Debug\netstandard2.0\CocktailTime.Common.dll
-C:\Dev\CocktailTime\CocktailTime.Common\obj\Debug\netstandard2.0\CocktailTime.Common.pdb
